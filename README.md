@@ -70,9 +70,16 @@ Listing all tables, I can identify what type of fields are required. My findings
 
 |Job| Field Type|
 |---|---|
-|machine_id | ForeignKey to="machine_profile/id" blank=False|
-
-
+|machine_id | ForeignKey to="machine_profile/id", blank=False|
+| created_by | ForeignKey to="profile/username", blank=False |
+| start_date | DateAutoField |
+| end_date | DateField, blank=True |
+| machine_status | ChoiceField, Field A/B/C |
+| location | CharField, Choice from company sites|
+| changed_by | CharField (error on picture) |
+| changed_on | DateAutoField |
+| company_name | ForeignKey to="profile/company/company_name", blank=False|
+| Amendment | Job does not require field a b or c as this is on the template |
 
 
 <img src="./assets/readme_images/asset_fields.png" height="300px">
