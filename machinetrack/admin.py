@@ -8,6 +8,7 @@ class ProfileView(admin.ModelAdmin):
         'first_name',
         'last_name',
         'company',
+        
     )
     list_filter= (
         'company',

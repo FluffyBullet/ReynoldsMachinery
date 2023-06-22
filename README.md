@@ -3,7 +3,7 @@
 ## Index
 * [Introduction](#Introduction)
 * [Planning](#planning)
-*
+* [Design](#design)
 
 ## Introduction
 
@@ -41,13 +41,13 @@ As a User, I wish to:
 
 After many mock drawings of tables, I have decided to use the following paths for my relational tables:
 
-<img src="./assets/readme_images/drmachines_tables.png" height="250px">
+<img src="./assets/readme_images/drmachines_tables.png" height="250px"/>
 
 Arrows used on this display is to help guide the relations between each table. i.e username between user and Profile is a one to one relationship, but the username from Profile is able and linked to creation of Company and active job.
 
 Listing all tables, I can identify what type of fields are required. My findings are:
 
-<img src="./assets/readme_images/account_models.png" height="150px">
+<img src="./assets/readme_images/account_models.png" height="150px"/>
 
 | Profile | Field type |
 |----|----|
@@ -56,7 +56,7 @@ Listing all tables, I can identify what type of fields are required. My findings
 | last_name | CharField, max_length=40 | 
 | company | CharField, max_length=50 |
 
-<img src="./assets/readme_images/process_fields.png" height="300px">
+<img src="./assets/readme_images/process_fields.png" height="300px"/>
 
 | Company | Field type |
 |---|---|
@@ -82,4 +82,54 @@ Listing all tables, I can identify what type of fields are required. My findings
 | Amendment | Job does not require field a b or c as this is on the template |
 
 
-<img src="./assets/readme_images/asset_fields.png" height="300px">
+<img src="./assets/readme_images/asset_fields.png" height="300px"/>
+
+| Machine Profile | Field Type |
+|----|----|
+| manufacturer_reference | primary_key |
+| company_reference | CharField |
+| model | CharField, Choice |
+| serial_number | CharField, unique=True |
+| year_of_manufacture | DateField |
+| status | CharField, Choice |
+| owner | CharField, Choice |
+| is_electrical | Boolean |
+| last_pat_test | DateField |
+| last_calibration | DateField |
+
+| Machine Model | Field Type | 
+|---|----|
+| manufacturer | CharField |
+| model | primary_key |
+| fusion_type | CharField |
+| voltage | CharField |
+| image | ImageField |
+| manufacturer_product_code | CharField| 
+
+## Design
+
+Previous attempt at creating a tracker for machines on projects were produced in a list format with a status at the final column, but only produced on Microsoft Excel.
+
+Following the design of a KanBan board, my approach is adopting three tables to host status of each machine. With each machine consuming a tile, which can be moved between columns within a form.
+
+For mobile view, these will be visible via accordian display, whilst tablets and larger screens will show three columns side by side.
+
+For mobile view, I have created the following templates:
+
+**Home Page | Tracking Page | Asset Profile | Model Profile**
+
+| <img src="./assets/readme_images/mobile_home_page.png" height="250px"/> | 
+<img src="./assets/readme_images/mobile_tracker_page.png" height="250px"/> | 
+<img src="./assets/readme_images/mobile_asset_profile_page.png" height="250px"/> |
+<img src="./assets/readme_images/mobile_machine_profile.png" height="250px"/>
+
+For larger displays, I have selected the following designs:
+
+**Home Page | Tracking Page | Asset Profile | Model Profile**
+
+| <img src="./assets/readme_images/large_home_page.png" height="250px"/> |
+<img src="./assets/readme_images/large_tracking_page.png" height="250px"/> |
+<img src="./assets/readme_images/large_machine_profile.png" height="250px"/>|
+<img src="./assets/readme_images/large_model_profile.png" height="250px"/>
+
+each page includes a similar design with a minalistic display but effective show of relevant information.
