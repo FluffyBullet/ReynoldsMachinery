@@ -4,6 +4,7 @@
 * [Introduction](#Introduction)
 * [Planning](#planning)
 * [Design](#design)
+* [Testing](#testing)
 
 ## Introduction
 
@@ -133,3 +134,22 @@ For larger displays, I have selected the following designs:
 <img src="./assets/readme_images/large_model_profile.png" height="250px"/>
 
 each page includes a similar design with a minalistic display but effective show of relevant information.
+
+## Testing
+
+Upon modular completion, and completion of the user stories on my project/kanban board of github, I am conducting a series of test to ensure the installments are behaving as expected. Below tables display my behaviour driven testing applied to the uploads:
+
+1. As a user I wish to create an account:
+    * On the website's landing page, you are met with two prompts to either log in or create an account. On clicking signup, you will be transfered to a signup page imported by django allauth (yet to be edited).
+    * Completing the form and submitting will transfer the user back to the home page. Navigation bar will display option to signout rather than login or signup.
+    * <img src="./assets/readme_images/reynoldstracker_signup_success.png"/>
+1. As a user I wish to log into my account with display confirmation:
+    * Whilst logged out, visiting the applications homepage, select icon to login.
+    * Enter the account details used to create your account earlier.
+    * At present, on login, the page is redirected to homepage with navbar confirming the user is logged in. Recent amendment allowes inclusion of username login in the header as a form of confirmation:
+    * <img src="./assets/readme_images/reynoldstracker_login_success.png"/>
+1. As a user I wish to log out of my account with confirmation of no longer being logged in.
+    * After logging in, visiting the navbar icons to request a logout of my account.
+    * Confirm request to log out with page provided by django allauth.
+    * Once complete, the user will be navigated back to the front page with all links advising to log in or signup.
+    * <img src="./assets/readme_images/reynoldstracker_signout_success.png"/>

@@ -38,9 +38,10 @@ class Company(models.Model):
                               related_name="+",
                                on_delete=models.CASCADE)
     employees = ArrayField(
-        models.CharField(max_length=50,blank=True)
-        , size=10
-        , blank=True)
+        models.CharField(max_length=50, blank=True),
+        size=10,
+        blank=True
+    )
     phone_number = models.PositiveIntegerField(blank=True, null=True)
     field_a = models.CharField(max_length=30, blank=False)
     field_b = models.CharField(max_length=30, blank=False)
