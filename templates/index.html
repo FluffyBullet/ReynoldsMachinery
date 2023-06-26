@@ -2,19 +2,26 @@
 
 {% block content %}
 <div class="text-center intro-text">
+    {% if user.is_authenticated %}
+    <div>
+        <p>Options:</p>
+        <a class="btn btn-primary" href="#" role="button">Tracking Page</a>
+        <hr/>
+        <a class="btn btn-primary" href="#" role="button">Company details</a>
+        <hr/>
+        <a class="btn btn-primary" href="#" role="button">Create a new Asset</a>
+    </div>
+    {% else %}
     <p>Welcome to ReynoldsTracker!</p>
     <p>
         Please sign up or log in for use of the tracker. On log-in, we have a help section to understand what to expect
         if needed!
     </p>
     <div class="d-flex justify-content-around">
-        <a href="{% url 'account_login' %}">
-            <button type="button" class="btn btn-primary">Log-In</button>
-        </a>
-        <a href="{% url 'account_signup' %}">
-            <button type="button" class="btn btn-primary">Sign-Up</button>
-        </a>
+            <a class="btn btn-primary" href="{% url 'account_login' %}" role="button" >Log-In</a>
+            <a class="btn btn-primary" href="{% url 'account_signup' %}" role="button" >Sign-Up</a>
     </div>
+    {% endif %}
 
 </div>
 {% endblock content%}
