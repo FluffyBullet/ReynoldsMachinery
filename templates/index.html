@@ -1,0 +1,20 @@
+{% extends "base.html"%}
+
+{% block content %}
+<div class="text-center intro-text">
+    <p>Welcome to ReynoldsTracker!</p>
+    <p>
+        Please sign up or log in for use of the tracker. On log-in, we have a help section to understand what to expect
+        if needed!
+    </p>
+    <div class="d-flex justify-content-around">
+        <a href="{% url 'account_login' %}">
+            <button type="button" class="btn btn-primary">Log-In</button>
+        </a>
+        <a href="{% url 'account_signup' %}">
+            <button type="button" class="btn btn-primary">Sign-Up</button>
+        </a>
+    </div>
+
+</div>
+{% endblock content%}
