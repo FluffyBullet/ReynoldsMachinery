@@ -6,10 +6,33 @@
     <div>
         <p>Options:</p>
         <a class="btn btn-primary" href="#" role="button">Tracking Page</a>
-        <hr/>
-        <a class="btn btn-primary" href="#" role="button">Company details</a>
-        <hr/>
+        <hr>
+        <!-- Linked to modal for further details -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Company Details
+          </button>
+        <hr>
         <a class="btn btn-primary" href="#" role="button">Create a new Asset</a>
+
+        <!-- Modal supplied by Bootstrap - providing options for create or edit company -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Company Details</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <a class="btn btn-primary" href="{% url 'create_company' %}" role="button">Create Company</a>
+                    <hr>
+                    <a class="btn btn-primary" href="#" role="button">Edit Company</a>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
     {% else %}
     <p>Welcome to ReynoldsTracker!</p>
