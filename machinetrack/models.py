@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.contrib.postgres.fields import ArrayField
 from django.dispatch import receiver
+from phone_field import PhoneField
 
 
 # Create your models here.
@@ -42,7 +43,7 @@ class Company(models.Model):
         size=10,
         blank=True
     )
-    phone_number = models.PositiveIntegerField(blank=True, null=True)
+    phone_number = PhoneField(blank=True, null=True)
     field_a = models.CharField(max_length=30, blank=False)
     field_b = models.CharField(max_length=30, blank=False)
     field_c = models.CharField(max_length=30, blank=False)

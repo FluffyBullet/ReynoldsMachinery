@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'crispy_forms',
     'crispy_bootstrap5',
+    'phone_field',
     'machinetrack',
 ]
 

@@ -148,22 +148,56 @@ Upon modular completion, and completion of the user stories on my project/kanban
 1. As a user I wish to create an account:
     * On the website's landing page, you are met with two prompts to either log in or create an account. On clicking signup, you will be transfered to a signup page imported by django allauth (yet to be edited).
     * Completing the form and submitting will transfer the user back to the home page. Navigation bar will display option to signout rather than login or signup.
-    * <img src="./assets/readme_images/reynoldstracker_signup_success.png"/>
+        * <img src="./assets/readme_images/reynoldstracker_signup_success.png"/>
 1. As a user I wish to log into my account with display confirmation:
     * Whilst logged out, visiting the applications homepage, select icon to login.
     * Enter the account details used to create your account earlier.
     * At present, on login, the page is redirected to homepage with navbar confirming the user is logged in. Recent amendment allowes inclusion of username login in the header as a form of confirmation:
-    * <img src="./assets/readme_images/reynoldstracker_login_success.png"/>
+        * <img src="./assets/readme_images/reynoldstracker_login_success.png"/>
 1. As a user I wish to log out of my account with confirmation of no longer being logged in.
     * After logging in, visiting the navbar icons to request a logout of my account.
     * Confirm request to log out with page provided by django allauth.
     * Once complete, the user will be navigated back to the front page with all links advising to log in or signup.
-    * <img src="./assets/readme_images/reynoldstracker_signout_success.png"/>
+        * <img src="./assets/readme_images/reynoldstracker_signout_success.png"/>
 1. As a user I wish to create a company.
     * Once a user is logged in, the home/landing page will include a list of options availalbe for the user.
     * Second link, advises of Company Details. Clicking on this will display a modal of two further options, create or edit.
     * Selecting Create will then forward the user to a form page for creation of an account.
-    * <img src="./assets/readme_images/front_options.png" height="150px"/>
-    * <img src="./assets/readme_images/company_modal.png" height="150px"/>
-    * <img src="./assets/readme_images/company_registry.png" height="150px"/>
-    * <img src="./assets/readme_images/company_create_success.png" height="150px"/>
+        * <img src="./assets/readme_images/front_options.png" height="150px"/>
+        * <img src="./assets/readme_images/company_modal.png" height="150px"/>
+        * <img src="./assets/readme_images/company_registry.png" height="150px"/>
+        * <img src="./assets/readme_images/company_create_success.png" height="150px"/>
+1. As a user I wish to join a company.
+    * Similar to steps above, once logged in and loaded the landing page you will be prompted with buttons for links.
+    * Second link, advises of Company Details. Clicking this will bring up two options, Create or Join (Different from above as edited for better user experience)
+    * Clicking Join Company you will be re-directed to a page with a two field form.
+        * <img src="./assets/readme_images/reynoldstracker_joincompany.png" height="150px"/>
+    * In attempt to join a company, you will receive feedback depending if an error occurs or success:
+        * Incorrect Company, typing in a company which does not exist on the database will return "Company does not exist" under the form:
+        * <img src="./assets/readme_images/reynoldstracker_joincompany_nocompany.png" height="150px"/>
+        * Incorrect Pin, typing an incorrect pin for the company will return "Pin entry is incorrect":
+        * <img src="./assets/readme_images/reynoldstracker_joincompany_wrongpin.png" height="150px"/>
+        * Fields with no entry, crispy forms will display both fields require entry:
+        * <img src="./assets/readme_images/reynoldstracker_joincompany_blankcompany.png" height="150px"/>
+        * <img src="./assets/readme_images/reynoldstracker_joincompany_blankpin.png" height="150px"/>
+    * When successful, you will be redirected to the homepage with a confirmation at the top of the page advising you have joined the company:
+        * <img src="./assets/readme_images/reynoldstracker_joincompany_success.png" height="150px"/>
+1. As a user I wish to edit my company details.
+    * Copying the above steps, on log in of the website the main landing page will advise me of links available.
+    * If a user is registered to a company, clicking on the second option of Company details they will be displayed with Edit or Leave.
+    * Clicking on Edit compnay, the user is forward to a form page similar to create company pre-populated with fields already entered:
+        *  <img src="./assets/readme_images/reynoldstracker_editcompany.png" height="150px"/>
+    * After either editing or updating a field, the user can scroll to the bottom of the form to view two buttons - update or cancel.
+        * Selecting Update will display save the data entered, directing the user to the front page and display a message to confirm the company has been updated:
+            * Error found - as a PositiveIntegerField, this field will not allow a number to be entered.
+            * <img src="./assets/readme_images/reynoldstracker_error_companyphone.png" height="150px"/>
+            * Extending django's library with django-phone-field allowed me to edit this field and run another migration to display a correct field:
+            * <img src="./assets/readme_images/reynoldstracker_editcompany_success.png" height="150px"/>
+        * Selecting cancel will re-direct the user to the front page with no changes being made- confirmed as working correct
+1. As a user I wish to leave the current company.
+    * On login, the user will be displayed with a list of buttons and descriptions on their purpose.
+    * Selecting the second option - Company Details will display a modal box of two links - update or leave.
+    * Pressing leave will redirect the user to the front page with confirmation above the links to confirm they have left the company.
+    * <img src="./assets/readme_images/reynoldstracker_leavecompany.png" height="150px"/>
+    * Note: Grammar error found with additional '. this was removed after saving the above screenshot.
+

@@ -33,17 +33,17 @@ def create_company(request):
     return render(request, 'create_company.html', {'CompanyForm':CompanyForm})        
 
 def edit_company(request, company):
-     company = get_object_or_404(Company, company_name=company)
+    company = get_object_or_404(Company, company_name=company)
 
-     if request.method == "POST":
-         form = CompanyForm(request.POST, instance=company)
-         if form.is_valid():
-              form.save()
-              messages.success(request, "Company details updated")
-              return redirect('home')
-     else:
-        form=CompanyForm(instance=company)
-     return render(request, 'edit_company.html', {'CompanyForm':CompanyForm})
+    if request.method == "POST":
+        form = CompanyForm(request.POST, instance=company)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Company details updated")
+            return redirect('home')
+    else:
+        form = CompanyForm(instance=company)
+    return render(request, 'edit_company.html', {'CompanyForm': form})
 
 def join_company(request):
     if request.method == 'POST':
@@ -78,9 +78,9 @@ def leave_company(request):
         messages.error(request, ' you are not part of a company.')
         return redirect('home')       
      else :
+        message = f'You have left {profile.company}'
         profile.company = ""
         profile.save()
-        message = f'You have left `{profile.company}'
         messages.success(request, message)
         return redirect('home')
 
