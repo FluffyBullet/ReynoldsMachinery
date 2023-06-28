@@ -4,6 +4,11 @@
 <div class="text-center intro-text">
     {% if user.is_authenticated %}
     <div>
+      {% if messages %}
+          {% for message in messages %}
+          <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+          {% endfor %}
+      {% endif %}
         <p>Options:</p>
         <a class="btn btn-primary" href="#" role="button">Tracking Page</a>
         <hr>
@@ -11,11 +16,6 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Company Details
         </button>
-        {% if messages %}
-            {% for message in messages %}
-            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-            {% endfor %}
-        {% endif %}
         <hr>
         <a class="btn btn-primary" href="#" role="button">Create a new Asset</a>
 
@@ -30,10 +30,10 @@
                 <div class="modal-body">
                     <a class="btn btn-primary" href="{% url 'create_company' %}" role="button">Create Company</a>
                     <hr>
-                    <a class="btn btn-primary" href="#" role="button">Edit Company</a>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a class="btn btn-primary" href="{% url 'edit_company' user.profile.company %}" role="button">Edit Company</a>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>

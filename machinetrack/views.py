@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from .models import Company, Profile
@@ -32,23 +32,16 @@ def create_company(request):
         form = CompanyForm()
     return render(request, 'create_company.html', {'CompanyForm':CompanyForm})        
 
-# def CompanyOverview(request):
-#     queryset = Company.objects.all()
-#     template = 'create_company.html'
-#     context = {
-#         'CompanyForm': CompanyForm()
-#     }
+def edit_company(request, company):
+     company = get_object_or_404(Company, company_name=company)
 
-#     def post(self, request, *args, **kwargs):
-#        if request.method =='POST':
-#             form = CompanyForm(request.POST)
-#             if form.is_valid():
-#                 Company.instance.owner = request.user.username
-#                 form.save
-#                 return redirect('home')
-#             else:
-#                 form = CompanyForm()
-
-#     return render(request, template, context)
-
-
+     if request.method == "POST":
+         form = CompanyForm(request.POST, instance=company)
+         if form.is_valid():
+              form.save()
+              messages.success(request, "Company details updated")
+              return redirect('home')
+     else:
+        form=CompanyForm(instance=company)
+     return render(request, 'edit_company.html', {'CompanyForm':CompanyForm})
+            

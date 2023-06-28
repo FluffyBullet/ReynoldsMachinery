@@ -1,7 +1,7 @@
 {% extends "base.html"%} {% block content %}
 
 {% load crispy_forms_tags %}
-<h2>Create company</h2>
+<h2>Edit Company</h2>
 <form method="post" class="companyForm">
     {{ CompanyForm |crispy }}
     {% csrf_token %}
@@ -12,7 +12,7 @@
         {% endfor %}
     </ul>
     {% endif %}
-    <button class="btn btn-primary" type="submit">Register</button>
+    <button class="btn btn-primary" type="submit">Update</button>
     <a class="btn btn-primary" href="{% url 'home' %}">Cancel</a>
 </form>
 
