@@ -4,6 +4,7 @@
 <div class="text-center intro-text">
     {% if user.is_authenticated %}
     <div>
+      <!-- Display messages prompted by views.py success/warning/error -->
       {% if messages %}
           {% for message in messages %}
           <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
@@ -28,11 +29,14 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                  <!-- Function to determin if the user belongs to a company -->
                   {% if user.profile.company|length > 0 %}
+                  <!-- If user belongs to a company, display editing ability -->
                   <a class="btn btn-primary" href="{% url 'edit_company' user.profile.company %}" role="button">Edit Company</a>
                   <hr>
                   <a class="btn btn-primary" href="{% url 'leave_company'%}" role="button">Leave Company</a>
                   {% else %}
+                  <!-- If user does not belong to a company, either create or join -->
                   <a class="btn btn-primary" href="{% url 'create_company' %}" role="button">Create Company</a>
                   <hr>
                   <a class="btn btn-primary" href="{% url 'join_company'%}" role="button">Join Company</a>
@@ -46,6 +50,7 @@
           </div>
     </div>
     {% else %}
+    <!-- Display if user is not logged in on home page.  -->
     <p>Welcome to ReynoldsTracker!</p>
     <p>
         Please sign up or log in for use of the tracker. On log-in, we have a help section to understand what to expect
