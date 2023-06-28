@@ -28,14 +28,14 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <a class="btn btn-primary" href="{% url 'create_company' %}" role="button">Create Company</a>
-                    <hr>
-                    {% if user.profile.company|length > 0 %}
-                    <a class="btn btn-primary" href="{% url 'edit_company' user.profile.company %}" role="button">Edit Company</a>
-                    <hr>
-                    <a class="btn btn-primary" href="{% url 'leave_company'%}" role="button">Leave Company</a>
-                    {% else %}
-                    <a class="btn btn-primary" href="{% url 'join_company'%}" role="button">Join Company</a>
+                  {% if user.profile.company|length > 0 %}
+                  <a class="btn btn-primary" href="{% url 'edit_company' user.profile.company %}" role="button">Edit Company</a>
+                  <hr>
+                  <a class="btn btn-primary" href="{% url 'leave_company'%}" role="button">Leave Company</a>
+                  {% else %}
+                  <a class="btn btn-primary" href="{% url 'create_company' %}" role="button">Create Company</a>
+                  <hr>
+                  <a class="btn btn-primary" href="{% url 'join_company'%}" role="button">Join Company</a>
                     {% endif %}
                   </div>
                   <div class="modal-footer">

@@ -9,5 +9,10 @@
 <button class="btn btn-primary" type="submit">Join</button>
 <a class="btn btn-primary" href="{% url 'home' %}">Cancel</a>
 </form>
+{% if messages %}
+{% for message in messages %}
+<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+{% endfor %}
+{% endif %}
 
 {% endblock %}
