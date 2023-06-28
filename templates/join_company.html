@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<h2>Join Company</h2>
+<form method="post" class="companyForm">
+{{ JoinCompany |crispy}}
+{% csrf_token %}
+<button class="btn btn-primary" type="submit">Join</button>
+<a class="btn btn-primary" href="{% url 'home' %}">Cancel</a>
+</form>
+
+{% endblock %}

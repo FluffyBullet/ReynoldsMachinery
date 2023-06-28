@@ -19,4 +19,9 @@ class CompanyForm(forms.ModelForm):
         if Company.objects.filter(company_name = company_name).exists():
             raise forms.ValidationError("This company is already raised")
         return company_name
+    
+class JoinCompany(forms.Form):
+    company_name = forms.CharField(label="Company Name")
+    pin = forms.IntegerField(label="pin")
+        
         
