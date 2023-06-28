@@ -20,7 +20,10 @@ def create_company(request):
                 profile = Profile.objects.get(username = request.user.profile.username)
                 company.owner = profile
                 company.save()
-                messages.success(request, 'Your company has been created')
+                profile.company = company.company_name
+                profile.save()
+                message = f"Your company `{company.company_name}` has been created"
+                messages.success(request, message)
                 return redirect('home')
             else: 
                 print(form.errors)

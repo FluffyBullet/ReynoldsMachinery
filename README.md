@@ -166,3 +166,4 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * <img src="./assets/readme_images/front_options.png" height="150px"/>
     * <img src="./assets/readme_images/company_modal.png" height="150px"/>
     * <img src="./assets/readme_images/company_registry.png" height="150px"/>
+    * <img src="./assets/readme_images/company_create_success.png" height="150px"/>
