@@ -46,4 +46,5 @@ class Company(models.Model):
     field_a = models.CharField(max_length=30, blank=False)
     field_b = models.CharField(max_length=30, blank=False)
     field_c = models.CharField(max_length=30, blank=False)
+    pin = models.PositiveIntegerField(blank=False, default=0000)
 

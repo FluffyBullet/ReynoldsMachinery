@@ -11,4 +11,8 @@ hr {
 
 .companyForm {
     width:80%;
+    text-align:center;
+    justify-content:center;
+    margin: 0 auto;
+    padding:25px;
 }

@@ -135,6 +135,12 @@ For larger displays, I have selected the following designs:
 
 each page includes a similar design with a minalistic display but effective show of relevant information.
 
+For an improved user experience, users can opt to create or edit their selected company from the home page. As this icon is to expand within two optional selections, create or edit - clicking of this button/link will open a modal with either option side.
+
+At present, I have only created the create company at present. As users can update their own company names in profile, I encoutered the issue of users are able to add companies to their profile without a verification method. To counter this, I've included an additional "pin" requirement to the company profile, which will be used in the edit profile. This will include if company in list of companies and pin is equal to the created, update the form. Otherwise an error will be displayed.
+
+<img src="./assets/readme_images/company_modal.png" height="250px"/>
+
 ## Testing
 
 Upon modular completion, and completion of the user stories on my project/kanban board of github, I am conducting a series of test to ensure the installments are behaving as expected. Below tables display my behaviour driven testing applied to the uploads:
@@ -153,3 +159,10 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * Confirm request to log out with page provided by django allauth.
     * Once complete, the user will be navigated back to the front page with all links advising to log in or signup.
     * <img src="./assets/readme_images/reynoldstracker_signout_success.png"/>
+1. As a user I wish to create a company.
+    * Once a user is logged in, the home/landing page will include a list of options availalbe for the user.
+    * Second link, advises of Company Details. Clicking on this will display a modal of two further options, create or edit.
+    * Selecting Create will then forward the user to a form page for creation of an account.
+    * <img src="./assets/readme_images/front_options.png" height="150px"/>
+    * <img src="./assets/readme_images/company_modal.png" height="150px"/>
+    * <img src="./assets/readme_images/company_registry.png" height="150px"/>

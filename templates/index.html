@@ -9,8 +9,13 @@
         <hr>
         <!-- Linked to modal for further details -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Company Details
-          </button>
+          Company Details
+        </button>
+        {% if messages %}
+            {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
         <hr>
         <a class="btn btn-primary" href="#" role="button">Create a new Asset</a>
 
