@@ -37,6 +37,7 @@ class MachineModelAdmin(admin.ModelAdmin):
         'fusion_type',
         'manufacturer_product_code',
     )
+    
 
 admin.site.register(Profile, ProfileView)
 admin.site.register(Company, CompanyView)

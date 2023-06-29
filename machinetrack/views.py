@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import Company, Profile, MachineModel
-from .forms import CompanyForm, JoinCompany, CreateModelForm
+from .models import Company, Profile, MachineModel, MachineProfile
+from .forms import CompanyForm, JoinCompany, CreateModelForm, CreateAssetForm
 from django.contrib import messages
 
 # Create your views here.
 
+# Display for home page
 def Home(request):
     template = 'index.html'
     return render(request, template)
 
-
+# Section for associated account
 def create_company(request):
     if request.method =='POST':
             form = CompanyForm(request.POST)
@@ -84,7 +85,7 @@ def leave_company(request):
         messages.success(request, message)
         return redirect('home')
 
-
+# Section for assets/machines
 def create_model(request):
     if request.method == 'POST':
         form = CreateModelForm(request.POST, request.FILES)
@@ -104,9 +105,37 @@ def create_model(request):
             return redirect('home')
         else:
             message = f"{form.data['model_name']} is already an existing model"
-            print(form.errors)
             messages.error(request, message)
     else:
         form = CreateModelForm()
 
     return render(request, 'new_model.html', {'CreateModelForm': form})
+
+def new_asset(request):
+    if request.method == 'POST':
+        form = CreateAssetForm(request.POST)
+        if form.is_valid():
+            form_data = form.cleaned_data
+            message = f"{form_data['model']} with s`/n {form_data['serial_number']} has been added."
+            machine = MachineProfile(
+                manufacturer_reference=form_data['manufacturer_reference'],
+                company_reference = form_data['company_reference'],
+                model = form_data['model'],
+                serial_number = form_data['serial_number'],
+                year_of_man = form_data['year_of_man'],
+                status = form_data['status'],
+                owner = form_data['owner'],
+                is_electrical= form_data['is_electrical'],
+                last_pat_test = form_data['last_pat_test'],
+                last_calibration = form_data['last_calibration'],  
+                )
+            machine.save()
+            messages.success(request, message)
+            return redirect('home')
+        else:
+            message = f"{form_data['model']} with s`/n {form_data['serial_number']} is already an existing item"
+            messages.error(request, message)
+    else:
+        form = CreateAssetForm()
+
+    return render(request, 'new_asset.html',{'CreateAssetForm': form})

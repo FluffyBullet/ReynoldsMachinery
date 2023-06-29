@@ -58,7 +58,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="newMachines">Company Details</h1>
+              <h1 class="modal-title fs-5" id="newMachines">New Machine</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -67,7 +67,7 @@
                 <a class="btn btn-primary" href="{% url 'create_model' %}" role="button">Create New Model</a>
                 <hr>
               </div>
-              <a class="btn btn-primary" href="#" role="button">Create New Asset</a>
+              <a class="btn btn-primary" href="{% url 'new_asset'%}" role="button">Create New Asset</a>
             </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

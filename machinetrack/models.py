@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.contrib.postgres.fields import ArrayField
 from django.dispatch import receiver
 from phone_field import PhoneField
+import datetime
 
 
 # Create your models here.
@@ -60,3 +61,18 @@ class MachineModel(models.Model):
     image = models.FileField(upload_to = 'images/',
                              )
     manufacturer_product_code = models.CharField(max_length = 20)
+
+class MachineProfile(models.Model):
+    """
+    Unique machine references linked with models above. These are indiviudal asset references
+    """
+    manufacturer_reference = models.CharField(unique=True, max_length=25, blank=False)
+    company_reference = models.CharField(max_length=25, blank=True)
+    model = models.ForeignKey(MachineModel, to_field="model_name", on_delete=models.CASCADE)
+    serial_number = models.CharField(max_length=30, unique=True)
+    year_of_man = models.PositiveIntegerField()
+    status = models.CharField(max_length=30)
+    owner = models.CharField(max_length=30)
+    is_electrical = models.BooleanField(default=True)
+    last_pat_test = models.DateTimeField()
+    last_calibration = models.DateTimeField()

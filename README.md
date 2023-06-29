@@ -206,5 +206,7 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * When clicking on new Model, a new userform will be presented requesting for relevant information and requirement fields.
     * <img src="./assets/readme_images/reynoldstracker_machinemodel_created.png" height="150px"/>
     * I have opted to allow this as a create only. Updates will need to be made via admin/staff at the admin panel.
-
+1. As a user I wish to create a new Asset.
+    * Users have the ability to load their own asset information as they may use this for other supplier machines on the same site.
+    * A further update results in another button on the landing page leading to a pop up modal. Options when selecting "New Machine details" lead to either New Model or New Asset.
 

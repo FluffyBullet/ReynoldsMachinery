@@ -9,4 +9,5 @@ urlpatterns = [
     path('join-company/', views.join_company, name="join_company"),
     path('leave-company/', views.leave_company, name="leave_company"),
     path('create-model/', views.create_model, name="create_model"),
+    path('create-asset/', views.new_asset, name="new_asset"),
     ] 
