@@ -4,7 +4,7 @@
 * [Introduction](#Introduction)
 * [Planning](#planning)
 * [Design](#design)
-* [Testing](#testing)
+* [User Stories & Testing](#testing-and-user-stories)
 
 ## Introduction
 
@@ -141,7 +141,7 @@ At present, I have only created the create company at present. As users can upda
 
 <img src="./assets/readme_images/company_modal.png" height="250px"/>
 
-## Testing
+## Testing and User Stories
 
 Upon modular completion, and completion of the user stories on my project/kanban board of github, I am conducting a series of test to ensure the installments are behaving as expected. Below tables display my behaviour driven testing applied to the uploads:
 
@@ -200,4 +200,11 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * Pressing leave will redirect the user to the front page with confirmation above the links to confirm they have left the company.
     * <img src="./assets/readme_images/reynoldstracker_leavecompany.png" height="150px"/>
     * Note: Grammar error found with additional '. this was removed after saving the above screenshot.
+1. As a user I wish to create a new model
+    * Users have the ability to load their own asset information as they may use this for other supplier machines on the same site.
+    * A further update results in another button on the landing page leading to a pop up modal. Options when selecting "New Machine details" lead to either New Model or New Asset.
+    * When clicking on new Model, a new userform will be presented requesting for relevant information and requirement fields.
+    * <img src="./assets/readme_images/reynoldstracker_machinemodel_created.png" height="150px"/>
+    * I have opted to allow this as a create only. Updates will need to be made via admin/staff at the admin panel.
+
 

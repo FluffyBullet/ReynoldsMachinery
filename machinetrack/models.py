@@ -49,3 +49,14 @@ class Company(models.Model):
     field_c = models.CharField(max_length=30, blank=False)
     pin = models.PositiveIntegerField(blank=False, default=0000)
 
+class MachineModel(models.Model):
+    """
+    Users can create a new base detail of machines
+    """
+    manufacturer = models.CharField(max_length=50)
+    model_name = models.CharField(unique=True, max_length=20, blank=False)
+    fusion_type = models.CharField(max_length=25)
+    voltage = models.PositiveIntegerField()
+    image = models.FileField(upload_to = 'images/',
+                             )
+    manufacturer_product_code = models.CharField(max_length = 20)

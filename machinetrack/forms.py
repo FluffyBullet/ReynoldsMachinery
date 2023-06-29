@@ -1,4 +1,4 @@
-from .models import Company
+from .models import Company, MachineModel   
 from django import forms
 from django.contrib import messages
 
@@ -24,4 +24,10 @@ class JoinCompany(forms.Form):
     company_name = forms.CharField(label="Company Name")
     pin = forms.IntegerField(label="pin")
         
-        
+
+class CreateModelForm(forms.ModelForm):
+    class Meta:
+        model = MachineModel
+        fields = ['manufacturer', 'model_name',
+                   'fusion_type', 'image', 
+                   'voltage', 'manufacturer_product_code']

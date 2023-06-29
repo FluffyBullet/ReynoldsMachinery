@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import Company, Profile
-from .forms import CompanyForm, JoinCompany
+from .models import Company, Profile, MachineModel
+from .forms import CompanyForm, JoinCompany, CreateModelForm
 from django.contrib import messages
 
 # Create your views here.
@@ -84,4 +84,29 @@ def leave_company(request):
         messages.success(request, message)
         return redirect('home')
 
-            
+
+def create_model(request):
+    if request.method == 'POST':
+        form = CreateModelForm(request.POST, request.FILES)
+        if form.is_valid():
+            form_data = form.cleaned_data
+            message = f"{form_data['model_name']} has been created"
+            model = MachineModel(
+                manufacturer=form_data['manufacturer'],
+                model_name=form_data['model_name'],
+                fusion_type=form_data['fusion_type'],
+                voltage=form_data['voltage'],
+                image=form_data['image'],
+                manufacturer_product_code=form_data['manufacturer_product_code']
+            )
+            model.save()
+            messages.success(request, message)
+            return redirect('home')
+        else:
+            message = f"{form.data['model_name']} is already an existing model"
+            print(form.errors)
+            messages.error(request, message)
+    else:
+        form = CreateModelForm()
+
+    return render(request, 'new_model.html', {'CreateModelForm': form})
