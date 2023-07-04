@@ -117,6 +117,8 @@ class Job(models.Model):
         related_name="jobs",
         on_delete=models.CASCADE
     )
+    contact = models.CharField(max_length=200, blank=True)
+    po_reference = models.CharField(max_length=25, blank=True)
 
     def __str__(self):
         return f"Job {self.id} created by {self.created_by} of company\

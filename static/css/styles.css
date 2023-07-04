@@ -25,16 +25,36 @@ hr {
     display:none;
 }
 
+h2{ 
+    text-align:center;
+    margin: 10px;
+}
+
+.card {
+    width:60%;
+    margin:0 auto;
+}
+
 @media screen and (min-width:758px){
     .mobileTracker{
         display:none;
     }
     .largeTracker {
         display:inherit;
-        width:60%;
+        width:80%;
         margin:0 auto;
     }
-    table{
-        width:80%;
+    table {
+        width:100%;
+    }
+    table th {
+        margin:0 auto;
+        text-align:center;
+        text-decoration:underline;
+    }
+    table td {
+        margin:0 auto;
+        text-align:center;
+        padding-top:15px;
     }
 }

@@ -7,66 +7,212 @@
     <!-- Bootstrap html for accordian style -->
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#field_a" aria-expanded="true" aria-controls="collapseOne">
-              field_a
-            </button>
-          </h2>
-          <div id="field_a" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <p>Series of available machines here</p>
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#field_a"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    {{ account.company.field_a }}
+                </button>
+            </h2>
+            <div id="field_a" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {% for job in jobs %}
+                    {% if job.job_status == "field_a"%}
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Machine: {{job.machine_id}}<br>
+                            <sub>{{job.machine_id.model}}</sub>
+                        </p>
+                        <table>
+                            <tr>
+                                <td>Job:</td>
+                                <td>{{job.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Contact:</td>
+                                <td>{{job.contact}}</td>
+                            </tr>
+                            <tr>
+                                <td>PO:</td>
+                                <td>{{job.po_reference}}</td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div>
+                    {% endif%}
+                    {% endfor %}
+                </div>
             </div>
-          </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#field_b" aria-expanded="false" aria-controls="collapseTwo">
-              field_b
-            </button>
-          </h2>
-          <div id="field_b" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <p>In use machines here</p>
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#field_b" aria-expanded="false" aria-controls="collapseTwo">
+                    {{ account.company.field_b}}
+                </button>
+            </h2>
+            <div id="field_b" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {% for job in jobs %}
+                    {% if job.job_status == "field_b"%}
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <p>Machine: {{job.machine_id}}<br>
+                            <sub>{{job.machine_id.model}}</sub>
+                        </p>
+                        <table>
+                            <tr>
+                                <td>Job:</td>
+                                <td>{{job.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Contact:</td>
+                                <td>{{job.contact}}</td>
+                            </tr>
+                            <tr>
+                                <td>PO:</td>
+                                <td>{{job.po_reference}}</td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div>
+                    {% endif%}
+                    {% endfor %}
+                </div>
             </div>
-          </div>
         </div>
         <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#field_c" aria-expanded="false" aria-controls="collapseThree">
-              field_c
-            </button>
-          </h2>
-          <div id="field_c" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <p>In repair machines here</p>
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#field_c" aria-expanded="false" aria-controls="collapseThree">
+                    {{ account.company.field_c}}
+                </button>
+            </h2>
+            <div id="field_c" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {% for job in jobs %}
+                    {% if job.job_status == "field_c"%}
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Machine: {{job.machine_id}}<br>
+                            <sub>{{job.machine_id.model}}</sub>
+                        </p>
+                        <table>
+                            <tr>
+                                <td>Job:</td>
+                                <td>{{job.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Contact:</td>
+                                <td>{{job.contact}}</td>
+                            </tr>
+                            <tr>
+                                <td>PO:</td>
+                                <td>{{job.po_reference}}</td>
+                            </tr>
+                        </table>
+                        </div>
+                    </div>
+                    {% endif%}
+                    {% endfor %}
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 </div>
 <div class="largeTracker mt-4">
-    <table class="border">
+    <table class="table table-striped-columns">
         <tr>
             <th>
-                {{ field_a }}
+                {{ account.company.field_a }}
             </th>
             <th>
-                field_b
+                {{ account.company.field_b}}
             </th>
             <th>
-                field_c
+                {{ account.company.field_c}}
             </th>
         </tr>
         <tr>
             <td>
-                {{ account.company }}
-                {{ jobs.machine_id }}
+                {% for job in jobs %}
+                {% if job.job_status == "field_a"%}
+                <div class="card">
+                    <div class="card-body">
+                        <p>Machine: {{job.machine_id}}<br>
+                        <sub>{{job.machine_id.model}}</sub>
+                    </p>
+                    <table>
+                        <tr>
+                            <td>Job:</td>
+                            <td>{{job.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact:</td>
+                            <td>{{job.contact}}</td>
+                        </tr>
+                        <tr>
+                            <td>PO:</td>
+                            <td>{{job.po_reference}}</td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                {% endif%}
+                {% endfor %}
             </td>
             <td>
-                <p>Testing</p>
+                {% for job in jobs %}
+                {% if job.job_status == "field_b"%}
+                <div class="card">
+                    <div class="card-body">
+                        <p>Machine: {{job.machine_id}}<br>
+                        <sub>{{job.machine_id.model}}</sub>
+                    </p>
+                    <table>
+                        <tr>
+                            <td>Job:</td>
+                            <td>{{job.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact:</td>
+                            <td>{{job.contact}}</td>
+                        </tr>
+                        <tr>
+                            <td>PO:</td>
+                            <td>{{job.po_reference}}</td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                {% endif%}
+                {% endfor %}
             </td>
             <td>
-                <p>Testing</p>
+                {% for job in jobs %}
+                {% if job.job_status == "field_c" %}
+                <div class="card">
+                    <div class="card-body">
+                        <p>Machine: {{job.machine_id}}<br>
+                        <sub>{{job.machine_id.model}}</sub>
+                    </p>
+                    <table>
+                        <tr>
+                            <td>Job:</td>
+                            <td>{{job.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact:</td>
+                            <td>{{job.contact}}</td>
+                        </tr>
+                        <tr>
+                            <td>PO:</td>
+                            <td>{{job.po_reference}}</td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
             </td>
         </tr>
     </table>

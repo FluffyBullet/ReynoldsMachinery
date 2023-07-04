@@ -15,7 +15,7 @@
       {% if user.profile.company%}
       <a class="btn btn-primary" href="{% url 'tracker' %}" role="button">Tracking Page</a>
       {% else %}
-      <p>{{ user.profile.company}}</p>
+      <p>Join a company to view the tracking page.</p>
       {% endif %}
       <hr>
       <!-- Linked to modal for further details -->
@@ -37,7 +37,7 @@
             </div>
             <div class="modal-body">
               <!-- Function to determin if the user belongs to a company -->
-              {% if user.profile.company|length > 0 %}
+              {% if user.profile.company %}
               <!-- If user belongs to a company, display editing ability -->
               <a class="btn btn-primary" href="{% url 'edit_company' user.profile.company %}" role="button">Edit
                 Company</a>
