@@ -34,7 +34,7 @@ CLOUDINARY_STORAGE = {
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 
     '127.0.0.1',
@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary'
+    'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',
     'phone_field',
