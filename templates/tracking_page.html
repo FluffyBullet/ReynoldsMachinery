@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2> {{ company }}'s hires:</h2>
+<div class="mobileTracker mt-3">
+    <!-- Bootstrap html for accordian style -->
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#field_a" aria-expanded="true" aria-controls="collapseOne">
+              field_a
+            </button>
+          </h2>
+          <div id="field_a" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>Series of available machines here</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#field_b" aria-expanded="false" aria-controls="collapseTwo">
+              field_b
+            </button>
+          </h2>
+          <div id="field_b" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>In use machines here</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#field_c" aria-expanded="false" aria-controls="collapseThree">
+              field_c
+            </button>
+          </h2>
+          <div id="field_c" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>In repair machines here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="largeTracker mt-4">
+    <table class="border">
+        <tr>
+            <th>
+                {{ field_a }}
+            </th>
+            <th>
+                field_b
+            </th>
+            <th>
+                field_c
+            </th>
+        </tr>
+        <tr>
+            <td>
+                {{ account.company }}
+                {{ jobs.machine_id }}
+            </td>
+            <td>
+                <p>Testing</p>
+            </td>
+            <td>
+                <p>Testing</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

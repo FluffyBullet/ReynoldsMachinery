@@ -13,7 +13,8 @@ class Profile(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=20, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    company = models.CharField(max_length=30, blank=True)
+    company = models.ForeignKey('Company', to_field="company_name",
+    on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -50,6 +51,9 @@ class Company(models.Model):
     field_c = models.CharField(max_length=30, blank=False)
     pin = models.PositiveIntegerField(blank=False, default=0000)
 
+    def __str__(self):
+        return self.company_name
+
 class MachineModel(models.Model):
     """
     Users can create a new base detail of machines
@@ -62,6 +66,9 @@ class MachineModel(models.Model):
                              )
     manufacturer_product_code = models.CharField(max_length = 20)
 
+    def __str__(self):
+        return f"{self.model_name} by {self.manufacturer}"
+
 class MachineProfile(models.Model):
     """
     Unique machine references linked with models above. These are indiviudal asset references
@@ -72,7 +79,39 @@ class MachineProfile(models.Model):
     serial_number = models.CharField(max_length=30, unique=True)
     year_of_man = models.PositiveIntegerField()
     status = models.CharField(max_length=30)
-    owner = models.CharField(max_length=30)
+    owner = models.ForeignKey(Company, to_field="company_name",
+                              on_delete=models.CASCADE)
     is_electrical = models.BooleanField(default=True)
-    last_pat_test = models.DateTimeField()
-    last_calibration = models.DateTimeField()
+    last_pat_test = models.DateField()
+    last_calibration = models.DateField()
+
+    def __str__(self):
+        return self.manufacturer_reference
+
+class Job(models.Model):
+    """
+    Class created for the active use of an asset with contact details.
+    """
+    machine_id = models.ForeignKey(
+        MachineProfile,
+        to_field='manufacturer_reference',
+        on_delete=models.CASCADE
+    )
+    created_by = models.CharField(max_length=250)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    machine_status = models.CharField(max_length=100)
+    changed_by = models.CharField(max_length=250)
+    changed_on = models.DateTimeField(auto_now=True)
+    company_name = models.ForeignKey(
+        Company,
+        to_field="company_name",
+        related_name="jobs",
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return f"Job {self.id} created by {self.created_by} of company\
+        {self.company_name} using {self.machine_id}"
+    
+

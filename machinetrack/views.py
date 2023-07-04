@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import Company, Profile, MachineModel, MachineProfile
+from django.views import generic, View
+from django.contrib.auth.decorators import login_required
+from .models import Company, Profile, MachineModel, MachineProfile, Job
 from .forms import CompanyForm, JoinCompany, CreateModelForm, CreateAssetForm
 from django.contrib import messages
 
@@ -57,7 +59,7 @@ def join_company(request):
                 company = Company.objects.get(company_name=company_name)
                 if company.pin == pin:
                     profile = Profile.objects.get(username =request.user)
-                    profile.company = company_name
+                    Profile.company = company_name
                     profile.save()
                     messages.success(request, f"You have joined '{company_name}'.")
                     return redirect('home')
@@ -139,3 +141,19 @@ def new_asset(request):
         form = CreateAssetForm()
 
     return render(request, 'new_asset.html',{'CreateAssetForm': form})
+
+# List through jobs relating to the company in query
+@login_required
+def job_list(request): 
+    """
+    Display view for all jobs with specific company
+    """
+    account =  request.user.profile
+    jobs = Job.objects.filter(company_name_id=account.company)
+
+    context = {
+        'account': account,
+        'jobs': jobs
+    }
+
+    return render(request, 'tracking_page.html', context)

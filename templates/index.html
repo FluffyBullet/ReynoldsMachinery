@@ -12,7 +12,11 @@
       {% endif %}
 
       <p>Options:</p>
-      <a class="btn btn-primary" href="#" role="button">Tracking Page</a>
+      {% if user.profile.company%}
+      <a class="btn btn-primary" href="{% url 'tracker' %}" role="button">Tracking Page</a>
+      {% else %}
+      <p>{{ user.profile.company}}</p>
+      {% endif %}
       <hr>
       <!-- Linked to modal for further details -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -69,9 +73,9 @@
               </div>
               <a class="btn btn-primary" href="{% url 'new_asset'%}" role="button">Create New Asset</a>
             </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
       </div>

@@ -16,3 +16,25 @@ hr {
     margin: 0 auto;
     padding:25px;
 }
+
+.mobileTracker {
+    width:80%;
+    margin:0 auto;
+}
+.largeTracker {
+    display:none;
+}
+
+@media screen and (min-width:758px){
+    .mobileTracker{
+        display:none;
+    }
+    .largeTracker {
+        display:inherit;
+        width:60%;
+        margin:0 auto;
+    }
+    table{
+        width:80%;
+    }
+}

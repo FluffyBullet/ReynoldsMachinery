@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Company, MachineModel
+from .models import Profile, Company, MachineModel, Job, MachineProfile
 
 # Register your models here.
 
@@ -37,8 +37,42 @@ class MachineModelAdmin(admin.ModelAdmin):
         'fusion_type',
         'manufacturer_product_code',
     )
+
+class MachineProfileAdmin(admin.ModelAdmin):
+    list_display = (
+        'manufacturer_reference',
+        'company_reference',
+        'model',
+        'year_of_man',
+        'status',
+        'owner',
+        'last_pat_test',
+        'last_calibration',
+    )
+    filter_by = (
+        'model',
+        'year_of_man',
+        'status',
+        'owner',
+        'last_pat_test',
+        'last_calibration',
+        )
+
+class JobsAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'machine_id',
+        'created_by',
+        'company_name',
+    )
+    filter_by = (
+        'company_name',
+        'created_by',
+    )
     
 
 admin.site.register(Profile, ProfileView)
 admin.site.register(Company, CompanyView)
 admin.site.register(MachineModel, MachineModelAdmin)
+admin.site.register(Job,JobsAdmin)
+admin.site.register(MachineProfile, MachineProfileAdmin)
