@@ -92,6 +92,13 @@ class Job(models.Model):
     """
     Class created for the active use of an asset with contact details.
     """
+
+    STATUS_CHOICES = (
+        ('none', 'none'),
+        ('field_a', 'field_a'),
+        ('field_b', 'field_b'),
+        ('field_c', 'field_c'),
+    )
     machine_id = models.ForeignKey(
         MachineProfile,
         to_field='manufacturer_reference',
@@ -99,8 +106,9 @@ class Job(models.Model):
     )
     created_by = models.CharField(max_length=250)
     start_date = models.DateField()
-    end_date = models.DateField()
-    machine_status = models.CharField(max_length=100)
+    job_status = models.CharField(max_length=100, 
+                                  choices=STATUS_CHOICES,
+                                  default='none')
     changed_by = models.CharField(max_length=250)
     changed_on = models.DateTimeField(auto_now=True)
     company_name = models.ForeignKey(
