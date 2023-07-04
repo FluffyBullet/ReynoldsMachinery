@@ -54,14 +54,14 @@ def join_company(request):
         if form.is_valid():
             company_name = form.cleaned_data['company_name']
             pin = form.cleaned_data['pin']
+            profile = Profile.objects.get(username =request.user)
 
             try:
                 company = Company.objects.get(company_name=company_name)
                 if company.pin == pin:
-                    profile = Profile.objects.get(username =request.user)
-                    Profile.company = company_name
-                    profile.save()
                     messages.success(request, f"You have joined '{company_name}'.")
+                    profile.company = company
+                    profile.save()
                     return redirect('home')
                 else:
                     messages.error(request, 'Pin entry is incorrect')
@@ -82,7 +82,7 @@ def leave_company(request):
         return redirect('home')       
      else :
         message = f'You have left {profile.company}'
-        profile.company = ""
+        profile.company = None
         profile.save()
         messages.success(request, message)
         return redirect('home')
