@@ -1,4 +1,4 @@
-from .models import Company, MachineModel, MachineProfile
+from .models import Company, MachineModel, MachineProfile, Job
 from django import forms
 from django.contrib import messages
 import datetime
@@ -25,7 +25,12 @@ class CompanyForm(forms.ModelForm):
 class JoinCompany(forms.Form):
     company_name = forms.CharField(label="Company Name")
     pin = forms.IntegerField(label="pin")
-        
+
+# Form to allow users to create a job
+class JobForm(forms.ModelForm):
+    class Meta:
+        model = Job
+        fields = ['machine_id', 'created_by', 'start_date', 'job_status', 'changed_by', 'company_name', 'contact', 'po_reference']
 
 class CreateModelForm(forms.ModelForm):
     class Meta:
@@ -71,3 +76,4 @@ class CreateAssetForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['model'].choices = [(model.model_name, model.model_name) for model in MachineModel.objects.all()]
+

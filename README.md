@@ -221,4 +221,9 @@ Upon modular completion, and completion of the user stories on my project/kanban
         * <img src="./assets/readme_images/reynoldstracker_mobiletracking.png" height="150px"/>
     * Larger screen view:
         * <img src="./assets/readme_images/reynoldstracker_largescreentracking.png" height="150px"/>
+1. As a user, I wish to view job details on a page.
+    * On login, the customer can navigate to the tracking page (providing they are within a company).
+    * Each tile/card displayed will navigate the user to the job detial page on click.
+    * This will display information of the machines with options for edit and delete below:
+        * <img src="./assets/readme_images/reynoldstracker_jobdetail.png" height="150px"/>
 

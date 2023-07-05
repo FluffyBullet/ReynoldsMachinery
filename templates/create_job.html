@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+
+{% load crispy_forms_tags %}
+<form method="post" class="companyForm" enctype="multipart/form-data">
+  {{ form|crispy}}
+  {% csrf_token %}
+
+
+  <button class="btn btn-primary" type="submit">Create</button>
+  <a class="btn btn-primary" href="{% url 'home' %}">Cancel</a>
+</form>
+
+<!-- Display messages prompted by views.py success/warning/error -->
+{% if messages %}
+{% for message in messages %}
+<p{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+  {% endfor %}
+  {% endif %}
+  {% endblock %}

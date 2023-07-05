@@ -4,8 +4,9 @@ from django.template import loader
 from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from .models import Company, Profile, MachineModel, MachineProfile, Job
-from .forms import CompanyForm, JoinCompany, CreateModelForm, CreateAssetForm
+from .forms import CompanyForm, JoinCompany, CreateModelForm, CreateAssetForm, JobForm
 from django.contrib import messages
+from django.urls import reverse
 
 # Create your views here.
 
@@ -163,6 +164,7 @@ def job_list(request):
 
 
 class JobDetailsView(View):
+    # Retrieve all job details owned by the company.
     def get(self, request, job_id):
         job = get_object_or_404(Job, id=job_id)
 
@@ -173,3 +175,14 @@ class JobDetailsView(View):
         }
         table_header = table_mapping.get(job.job_status)
         return render(request, 'job_details.html', {'job': job, 'table_header': table_header})
+    
+def create_job(request):
+    if request.method == 'POST':
+        form = JobForm(request.POST)
+        if form.is_valid():
+            # Save the form data
+            return redirect('job_details', job_id=new_job.id)
+    else:
+        form = JobForm()
+
+    return render(request, 'create_job.html', {'form': form})
