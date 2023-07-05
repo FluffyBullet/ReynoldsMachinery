@@ -8,9 +8,9 @@
 
 ## Introduction
 
-__Live Site__  - _To be added_
+__Live Site__  - https://reynoldstracking-4dff109f556e.herokuapp.com/
 
-__Repo Site__ - _To be added_
+__Repo Site__ - https://github.com/FluffyBullet/ReynoldsMachinery
 
 This project is created to meet the criteria to display my learning abilities of project 4 of 5 to CodeInstite's level 5 diploma for full-stack developer.
 
@@ -226,4 +226,14 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * Each tile/card displayed will navigate the user to the job detial page on click.
     * This will display information of the machines with options for edit and delete below:
         * <img src="./assets/readme_images/reynoldstracker_jobdetail.png" height="150px"/>
-
+1. As a user, I wish to visit add a new job to my tracking page.
+    * On login, the customer can navigate to the tracking page (providing they are within a company).
+    * At the bottom of the table presented, the user will be displayed with a button to add a new job.
+    * Selection of this button directs the user to a form page with fields to complete.
+    * On completion, the user is re-directed to the tracking page, where the new job will be displayed.
+        * <img src="./assets/readme_images/reynoldstracker_newjob_success.png" height="150px"/>
+        * Note for future building - field_a/b/c is showing as database description rather than company title. This will need to be updated to show the company title.
+1. As a user, I wish to edit detials of the job specified.
+    * From the tracking page, the customer can go into details of the active job.
+    * At the footer of the details, the user is displayed with two buttons - edit and delete.
+    * Edit will direct the user to a form page with fields pre-populated with the current information, allowing an opportunity to edit/update.

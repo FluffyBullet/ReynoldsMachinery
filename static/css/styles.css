@@ -19,7 +19,7 @@ hr {
 
 /* Set display for mobile view and large screens */
 .mobileTracker {
-    width:80%;
+    width:90%;
     margin:0 auto;
 }
 .largeTracker {
@@ -46,7 +46,7 @@ hr {
 }
 
 .card {
-    width:60%;
+    width:90%;
     margin:0 auto;
 }
 

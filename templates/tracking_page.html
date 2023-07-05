@@ -21,7 +21,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p>Machine: {{job.machine_id}}<br>
-                                <sub>{{job.machine_id.model}}</sub>
+                                <sub>{{job.machine_id.model}} with s/n {{ job.machine_id.serial_number}}</sub>
                             </p>
                             <table>
                                 <tr>
@@ -60,7 +60,7 @@
                         <div class="card mt-4">
                             <div class="card-body">
                                 <p>Machine: {{job.machine_id}}<br>
-                                    <sub>{{job.machine_id.model}}</sub>
+                                    <sub>{{job.machine_id.model}} with s/n {{ job.machine_id.serial_number}}</sub>
                                 </p>
                                 <table>
                                     <tr>
@@ -99,7 +99,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <p>Machine: {{job.machine_id}}<br>
-                                    <sub>{{job.machine_id.model}}</sub>
+                                    <sub>{{job.machine_id.model}} with s/n {{ job.machine_id.serial_number}}</sub>
                                 </p>
                                 <table>
                                     <tr>
@@ -146,7 +146,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p>Machine: {{job.machine_id}}<br>
-                                <sub>{{job.machine_id.model}}</sub>
+                                <sub>{{job.machine_id.model}} <br> with s/n {{ job.machine_id.serial_number}}</sub>
                             </p>
                             <table>
                                 <tr>
@@ -175,7 +175,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p>Machine: {{job.machine_id}}<br>
-                                <sub>{{job.machine_id.model}}</sub>
+                                <sub>{{job.machine_id.model}} <br> with s/n {{ job.machine_id.serial_number}}</sub>
                             </p>
                             <table>
                                 <tr>
@@ -204,7 +204,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p>Machine: {{job.machine_id}}<br>
-                                <sub>{{job.machine_id.model}}</sub>
+                                <sub>{{job.machine_id.model}}<br> with s/n {{ job.machine_id.serial_number}}</sub>
                             </p>
                             <table>
                                 <tr>
@@ -229,6 +229,9 @@
         </tr>
     </table>
     <a class="btn btn-primary align-self-end" href="{% url 'create_job'%}">Create Job</a>
+</div>
+<div class="position-absolute bottom-0 start-0">
+    <a href="{% url 'home' %}">Go Back</a>
 </div>
 
 {% endblock %}

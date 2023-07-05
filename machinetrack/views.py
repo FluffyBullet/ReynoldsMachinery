@@ -176,6 +176,7 @@ class JobDetailsView(View):
         table_header = table_mapping.get(job.job_status)
         return render(request, 'job_details.html', {'job': job, 'table_header': table_header})
     
+    
 def create_job(request):
     company = request.user.profile.company
     if request.method == 'POST':
