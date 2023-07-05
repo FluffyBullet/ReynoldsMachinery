@@ -209,4 +209,16 @@ Upon modular completion, and completion of the user stories on my project/kanban
 1. As a user I wish to create a new Asset.
     * Users have the ability to load their own asset information as they may use this for other supplier machines on the same site.
     * A further update results in another button on the landing page leading to a pop up modal. Options when selecting "New Machine details" lead to either New Model or New Asset.
+    * Clicking new asset will load the user to a new form for creation of a new asset.
+    * Completing the form, provided allows the user to create the asset - with a confirmation displayed on the front page. User is re-directed to the home page on completion.
+    * Edit - on testing the form required a date format rather than a year field. Now edited with dropdown list from year 1980 onwards.
+    * Error - code is requiring model reference to be a MachineModel reference, but logged as string. **To be Fixed**
+1. As a user I wish to view all jobs in one screen.
+    * If a user is assigned a company, they are provided with an option at the top of the list - referenced as a tracking page.
+    * On clicking the tracking button, the user is re-directed to a page with all jobs listed.
+    * The view is altered if the customer is viewing with a mobile or larger screens.
+    * Mobile view: 
+        * <img src="./assets/readme_images/reynoldstracker_mobiletracking.png" height="150px"/>
+    * Larger screen view:
+        * <img src="./assets/readme_images/reynoldstracker_largescreentracking.png" height="150px"/>
 

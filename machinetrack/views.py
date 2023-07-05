@@ -118,29 +118,32 @@ def new_asset(request):
         form = CreateAssetForm(request.POST)
         if form.is_valid():
             form_data = form.cleaned_data
-            message = f"{form_data['model']} with s`/n {form_data['serial_number']} has been added."
+            model_name = form_data['model']
+            machine_model = MachineModel.objects.get(model=model_name)
             machine = MachineProfile(
                 manufacturer_reference=form_data['manufacturer_reference'],
-                company_reference = form_data['company_reference'],
-                model = form_data['model'],
-                serial_number = form_data['serial_number'],
-                year_of_man = form_data['year_of_man'],
-                status = form_data['status'],
-                owner = form_data['owner'],
-                is_electrical= form_data['is_electrical'],
-                last_pat_test = form_data['last_pat_test'],
-                last_calibration = form_data['last_calibration'],  
-                )
+                company_reference=form_data['company_reference'],
+                model=machine_model,
+                serial_number=form_data['serial_number'],
+                year_of_man=form_data['year_of_man'],
+                status=form_data['status'],
+                owner=form_data['owner'],
+                is_electrical=form_data['is_electrical'],
+                last_pat_test=form_data['last_pat_test'],
+                last_calibration=form_data['last_calibration'],
+            )
+            message = f"`{model_name}` with s/n {form_data['serial_number']} has been added."
             machine.save()
             messages.success(request, message)
             return redirect('home')
         else:
-            message = f"{form_data['model']} with s`/n {form_data['serial_number']} is already an existing item"
+            form_data = form.cleaned_data
+            message = f"This machine is already added"
             messages.error(request, message)
     else:
         form = CreateAssetForm()
 
-    return render(request, 'new_asset.html',{'CreateAssetForm': form})
+    return render(request, 'new_asset.html', {'CreateAssetForm': form})
 
 # List through jobs relating to the company in query
 @login_required

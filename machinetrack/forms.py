@@ -37,25 +37,27 @@ class CreateModelForm(forms.ModelForm):
 # Custom widget to allow new_asset year of manufacturer to enter as year only.
 class YearField(forms.IntegerField):
     def __init__(self, *args, **kwargs):
-        kwargs['min_value'] = 1900
+        kwargs['min_value'] = 1980
         kwargs['max_value'] = datetime.date.today().year
         super().__init__(*args, **kwargs)
-class YearSelectDateWidget(SelectDateWidget):
-    def create_select(self, name, field, value, year_attrs, month_attrs, day_attrs):
-        # Only display the year select element
-        select_html = super().create_select(name, field, value, year_attrs, month_attrs, day_attrs)
-        return select_html.replace('<select', '<select style="display: none;"')
 
+class YearSelectWidget(forms.Select):
+    def __init__(self, attrs=None):
+        super().__init__(attrs)
+        self.choices = self.get_year_choices()
+
+    def get_year_choices(self):
+        current_year = datetime.date.today().year
+        return [(year, str(year)) for year in range(1980, current_year + 1)]
 
 class CreateAssetForm(forms.ModelForm):
     manufacture_reference = forms.CharField(max_length=25)
     company_reference = forms.CharField(max_length=25)
     model = forms.ChoiceField()
-
     serial_number = forms.CharField(max_length=30)
-    year_of_man = forms.DateField(widget=forms.SelectDateWidget(years=range(1900, datetime.date.today().year + 1)))
+    year_of_man = YearField(widget=YearSelectWidget())
     status = forms.CharField(max_length=30)
-    owner = forms.CharField(max_length=30)
+    owner = forms.ModelChoiceField(queryset=Company.objects.all())
     is_electrical = forms.BooleanField(initial=True, required=False)
     last_pat_test = forms.DateTimeField()
     last_calibration = forms.DateTimeField()
@@ -68,4 +70,4 @@ class CreateAssetForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['model'].choices = [(model.id, model.model_name) for model in MachineModel.objects.all()]
+        self.fields['model'].choices = [(model.model_name, model.model_name) for model in MachineModel.objects.all()]
