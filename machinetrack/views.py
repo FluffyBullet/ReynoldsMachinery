@@ -177,11 +177,17 @@ class JobDetailsView(View):
         return render(request, 'job_details.html', {'job': job, 'table_header': table_header})
     
 def create_job(request):
+    company = request.user.profile.company
     if request.method == 'POST':
         form = JobForm(request.POST)
         if form.is_valid():
-            # Save the form data
-            return redirect('job_details', job_id=new_job.id)
+            new_job = form.save(commit=False)
+            new_job.company_name = company
+            new_job.field_a = company.field_a
+            new_job.field_b = company.field_b
+            new_job.field_c = company.field_c
+            new_job.save()
+            return redirect('tracker')
     else:
         form = JobForm()
 

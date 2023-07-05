@@ -28,6 +28,17 @@ class JoinCompany(forms.Form):
 
 # Form to allow users to create a job
 class JobForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        company = kwargs.pop('company', None)
+        super().__init__(*args, **kwargs)
+        if company:
+            table_mapping = {
+                'field_a': company.field_a,
+                'field_b': company.field_b,
+                'field_c': company.field_c,
+            }
+            self.fields['status'].initial = table_mapping.get('field_a')
+
     class Meta:
         model = Job
         fields = ['machine_id', 'created_by', 'start_date', 'job_status', 'changed_by', 'company_name', 'contact', 'po_reference']
