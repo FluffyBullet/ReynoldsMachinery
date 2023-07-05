@@ -11,4 +11,5 @@ urlpatterns = [
     path('create-model/', views.create_model, name="create_model"),
     path('create-asset/', views.new_asset, name="new_asset"),
     path('tracking/', views.job_list, name='tracker'),
+    path('tracking/<int:job_id>/', views.JobDetailsView.as_view(), name='job_detail'),
     ] 

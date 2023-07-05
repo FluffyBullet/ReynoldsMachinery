@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2> Job: {{ job.id }}</h2>
+<div class="container">
+    <div class="jobDetails">
+            <img src="{{ job.machine_id.model.image.url }}" alt="Machine Image" class="jobDetailsImage">
+        <div>
+            <h4>{{ job.machine_id.manufacturer_reference }} | {{ job.machine_id.model.manufacturer_product_code }}</h4>
+            <h4>{{ job.machine_id.model.manufacturer }}</h4>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>Created By:</th>
+            <td>{{ job.created_by}}</td>
+        </tr>
+        <tr>
+            <th>Site Contact: </th>
+            <td>{{ job.contact}}</td>
+        </tr>
+        <tr>
+            <th>PO reference: </th>
+            <td> {{job.po_reference}}</td>
+        </tr>
+        <tr>
+            <th>Start Date:</th>
+            <td>{{ job.start_date}}</td>
+        </tr>
+        <tr>
+            <th>Voltage:</th>
+            <td>{{job.machine_id.model.voltage}}v</td>
+        </tr>
+        <tr>
+            <th>Status:</th>
+            <td> {{table_header}}</td>
+        </tr>
+    </table>
+
+</div>
+<div class="position-absolute bottom-0 start-0">
+    <a href="{% url 'tracker' %}">Go Back</a>
+</div>
+{% endblock %}

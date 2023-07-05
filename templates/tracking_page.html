@@ -17,27 +17,29 @@
                 <div class="accordion-body">
                     {% for job in jobs %}
                     {% if job.job_status == "field_a"%}
+                    <a href="{% url 'job_detail' job.id %}">
                     <div class="card">
                         <div class="card-body">
                             <p>Machine: {{job.machine_id}}<br>
-                            <sub>{{job.machine_id.model}}</sub>
-                        </p>
-                        <table>
-                            <tr>
-                                <td>Job:</td>
-                                <td>{{job.id}}</td>
-                            </tr>
-                            <tr>
-                                <td>Contact:</td>
-                                <td>{{job.contact}}</td>
-                            </tr>
-                            <tr>
-                                <td>PO:</td>
-                                <td>{{job.po_reference}}</td>
-                            </tr>
-                        </table>
+                                <sub>{{job.machine_id.model}}</sub>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>Job:</td>
+                                    <td>{{job.id}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact:</td>
+                                    <td>{{job.contact}}</td>
+                                </tr>
+                                <tr>
+                                    <td>PO:</td>
+                                    <td>{{job.po_reference}}</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
+                    </a>
                     {% endif%}
                     {% endfor %}
                 </div>
@@ -54,27 +56,29 @@
                 <div class="accordion-body">
                     {% for job in jobs %}
                     {% if job.job_status == "field_b"%}
-                    <div class="card mt-4">
-                        <div class="card-body">
-                            <p>Machine: {{job.machine_id}}<br>
-                            <sub>{{job.machine_id.model}}</sub>
-                        </p>
-                        <table>
-                            <tr>
-                                <td>Job:</td>
-                                <td>{{job.id}}</td>
-                            </tr>
-                            <tr>
-                                <td>Contact:</td>
-                                <td>{{job.contact}}</td>
-                            </tr>
-                            <tr>
-                                <td>PO:</td>
-                                <td>{{job.po_reference}}</td>
-                            </tr>
-                        </table>
+                    <a href="{% url 'job_detail' job.id %}">
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <p>Machine: {{job.machine_id}}<br>
+                                    <sub>{{job.machine_id.model}}</sub>
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>Job:</td>
+                                        <td>{{job.id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Contact:</td>
+                                        <td>{{job.contact}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PO:</td>
+                                        <td>{{job.po_reference}}</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     {% endif%}
                     {% endfor %}
                 </div>
@@ -91,27 +95,29 @@
                 <div class="accordion-body">
                     {% for job in jobs %}
                     {% if job.job_status == "field_c"%}
-                    <div class="card">
-                        <div class="card-body">
-                            <p>Machine: {{job.machine_id}}<br>
-                            <sub>{{job.machine_id.model}}</sub>
-                        </p>
-                        <table>
-                            <tr>
-                                <td>Job:</td>
-                                <td>{{job.id}}</td>
-                            </tr>
-                            <tr>
-                                <td>Contact:</td>
-                                <td>{{job.contact}}</td>
-                            </tr>
-                            <tr>
-                                <td>PO:</td>
-                                <td>{{job.po_reference}}</td>
-                            </tr>
-                        </table>
+                    <a href="{% url 'job_detail' job.id %}">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Machine: {{job.machine_id}}<br>
+                                    <sub>{{job.machine_id.model}}</sub>
+                                </p>
+                                <table>
+                                    <tr>
+                                        <td>Job:</td>
+                                        <td>{{job.id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Contact:</td>
+                                        <td>{{job.contact}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PO:</td>
+                                        <td>{{job.po_reference}}</td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     {% endif%}
                     {% endfor %}
                 </div>
@@ -136,81 +142,87 @@
             <td>
                 {% for job in jobs %}
                 {% if job.job_status == "field_a"%}
-                <div class="card">
-                    <div class="card-body">
-                        <p>Machine: {{job.machine_id}}<br>
-                        <sub>{{job.machine_id.model}}</sub>
-                    </p>
-                    <table>
-                        <tr>
-                            <td>Job:</td>
-                            <td>{{job.id}}</td>
-                        </tr>
-                        <tr>
-                            <td>Contact:</td>
-                            <td>{{job.contact}}</td>
-                        </tr>
-                        <tr>
-                            <td>PO:</td>
-                            <td>{{job.po_reference}}</td>
-                        </tr>
-                    </table>
+                <a href="{% url 'job_detail' job.id %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Machine: {{job.machine_id}}<br>
+                                <sub>{{job.machine_id.model}}</sub>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>Job:</td>
+                                    <td>{{job.id}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact:</td>
+                                    <td>{{job.contact}}</td>
+                                </tr>
+                                <tr>
+                                    <td>PO:</td>
+                                    <td>{{job.po_reference}}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </a>
                 {% endif%}
                 {% endfor %}
             </td>
             <td>
                 {% for job in jobs %}
                 {% if job.job_status == "field_b"%}
-                <div class="card">
-                    <div class="card-body">
-                        <p>Machine: {{job.machine_id}}<br>
-                        <sub>{{job.machine_id.model}}</sub>
-                    </p>
-                    <table>
-                        <tr>
-                            <td>Job:</td>
-                            <td>{{job.id}}</td>
-                        </tr>
-                        <tr>
-                            <td>Contact:</td>
-                            <td>{{job.contact}}</td>
-                        </tr>
-                        <tr>
-                            <td>PO:</td>
-                            <td>{{job.po_reference}}</td>
-                        </tr>
-                    </table>
+                <a href="{% url 'job_detail' job.id %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Machine: {{job.machine_id}}<br>
+                                <sub>{{job.machine_id.model}}</sub>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>Job:</td>
+                                    <td>{{job.id}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact:</td>
+                                    <td>{{job.contact}}</td>
+                                </tr>
+                                <tr>
+                                    <td>PO:</td>
+                                    <td>{{job.po_reference}}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </a>
                 {% endif%}
                 {% endfor %}
             </td>
             <td>
                 {% for job in jobs %}
                 {% if job.job_status == "field_c" %}
-                <div class="card">
-                    <div class="card-body">
-                        <p>Machine: {{job.machine_id}}<br>
-                        <sub>{{job.machine_id.model}}</sub>
-                    </p>
-                    <table>
-                        <tr>
-                            <td>Job:</td>
-                            <td>{{job.id}}</td>
-                        </tr>
-                        <tr>
-                            <td>Contact:</td>
-                            <td>{{job.contact}}</td>
-                        </tr>
-                        <tr>
-                            <td>PO:</td>
-                            <td>{{job.po_reference}}</td>
-                        </tr>
-                    </table>
+                <a href="{% url 'job_detail' job.id %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Machine: {{job.machine_id}}<br>
+                                <sub>{{job.machine_id.model}}</sub>
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>Job:</td>
+                                    <td>{{job.id}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact:</td>
+                                    <td>{{job.contact}}</td>
+                                </tr>
+                                <tr>
+                                    <td>PO:</td>
+                                    <td>{{job.po_reference}}</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </a>
                 {% endif %}
                 {% endfor %}
             </td>

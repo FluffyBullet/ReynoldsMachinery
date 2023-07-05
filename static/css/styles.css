@@ -17,6 +17,7 @@ hr {
     padding:25px;
 }
 
+/* Set display for mobile view and large screens */
 .mobileTracker {
     width:80%;
     margin:0 auto;
@@ -25,15 +26,42 @@ hr {
     display:none;
 }
 
-h2{ 
-    text-align:center;
-    margin: 10px;
+/* formatting for job detials listings */
+
+.jobDetailsImage {
+    max-width:80%;
+    margin:0 auto;
+    display:flex;
+    justify-content:center;
+    padding: 10px;
+    max-height:350px;
+}
+
+.jobDetails div {
+    border-top:solid 2px blue;
+}
+
+.jobDetails a .card {
+    text-decoration:none;
 }
 
 .card {
     width:60%;
     margin:0 auto;
 }
+
+
+/* Align all header elements on the page for a uniform style. */
+h2{ 
+    text-align:center;
+    margin: 10px;
+    text-decoration:none;;
+}
+
+a {
+    text-decoration:none;
+}
+
 
 @media screen and (min-width:758px){
     .mobileTracker{
@@ -44,6 +72,8 @@ h2{
         width:80%;
         margin:0 auto;
     }
+
+    /* Presentation of table */
     table {
         width:100%;
     }

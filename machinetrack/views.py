@@ -160,3 +160,16 @@ def job_list(request):
     }
 
     return render(request, 'tracking_page.html', context)
+
+
+class JobDetailsView(View):
+    def get(self, request, job_id):
+        job = get_object_or_404(Job, id=job_id)
+
+        table_mapping = {
+            'field_a': job.company_name.field_a,
+            'field_b': job.company_name.field_b,
+            'field_c': job.company_name.field_c,
+        }
+        table_header = table_mapping.get(job.job_status)
+        return render(request, 'job_details.html', {'job': job, 'table_header': table_header})
