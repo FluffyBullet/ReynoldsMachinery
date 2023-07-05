@@ -175,6 +175,20 @@ class JobDetailsView(View):
         }
         table_header = table_mapping.get(job.job_status)
         return render(request, 'job_details.html', {'job': job, 'table_header': table_header})
+
+class EditJobView(View):
+    def get(self, request, job_id):
+        job = get_object_or_404(Job, id=job_id)
+        form = JobForm(instance=job)
+        return render(request, 'job_edit.html', {'form': form})
+    
+    def post(self, request, job_id):
+        job = get_object_or_404(Job, id=job_id)
+        form = JobForm(request.POST, instance=job)
+        if form.is_valid():
+            form.save()
+            return redirect('tracker')
+        return render(request, 'job_edit.html', {'form': form})
     
     
 def create_job(request):
