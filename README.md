@@ -213,6 +213,7 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * Completing the form, provided allows the user to create the asset - with a confirmation displayed on the front page. User is re-directed to the home page on completion.
     * Edit - on testing the form required a date format rather than a year field. Now edited with dropdown list from year 1980 onwards.
     * Error - code is requiring model reference to be a MachineModel reference, but logged as string. **To be Fixed**
+    * Unforutnately I have been unable to resolve this issue, as forms are saving the entry as a string, but not matching the type/requirements of the targeted model. Whilst this cannot be completed by a user, machine models can still be created by admin.
 1. As a user I wish to view all jobs in one screen.
     * If a user is assigned a company, they are provided with an option at the top of the list - referenced as a tracking page.
     * On clicking the tracking button, the user is re-directed to a page with all jobs listed.
@@ -244,4 +245,36 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * Delete will display a modal seeking confirmation if the user wishes to delete the current job.
     * Once actioned, the user is redirected back to the tracking page.
 
+### Compliance
+Throughout my course, I have checked my code against validators to ensure all code created is clean. Whilst all code is not refactored to the best of it's abilities, the primary aim was to create the functionaility. 
+
+Whilst coding on Visual Studio Code for Windows, I have found errors were raised as importing errors. Comparing this to other IDE's - like gitpod, I found these errors were only isolated to the current software system.
+
+An extension to Visual Studio code, PEP8 was installed to ensure all code was compliant with the PEP8 standards. This was used to ensure all code was clean and readable.
+
+### Acknowledgements
+
+Throught this course, I have heavily relied on a select volume of resources including:
+W3 schools - https://www.w3schools.com/
+YouTube, WebDevSimplified and other streamers alike
+OpenAI/ChatGPT for diagnosing and troubleshooting
+My brother - Jason Reynolds for hours of support and guidance
+Code Institute tutor system
+Slack community and Stack Overflow
+
+### Creating a copy
+For users who wish to make a copy of my project, please do so by visiting my respository and selecting the clone/download button. This will provide you with a link to the repository.
+This can be either saved to your local machine or cloned via gitpod.
+
+Creation of a django system requires your app to be deployed a site other than github to process the database. I have used Heroku for this purpose. Please see the below steps to create a copy of my project:
+
+Create a Database, in this instance I've used ElephantSQL. This will provide you with a database URL. This will need to be added to your settings.py file under the DATABASES section.
+
+Make a secret key to be stored within your env.py file - but make sure to include this into your .gitignore file. This will ensure your key is not shared with the public.
+
+Add a new pipeline project to Heroku. This will provide you with a URL to your app. This will need to be added to your settings.py file under the ALLOWED_HOSTS section.
+
+Under settings, add config var's - including your Database URL, secret key, API Keys you may be using and other details you wish to keep private.
+
+I hope you enjoy reviewing my project!
 

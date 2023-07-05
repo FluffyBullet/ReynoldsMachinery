@@ -75,7 +75,7 @@ class MachineProfile(models.Model):
     """
     manufacturer_reference = models.CharField(unique=True, max_length=25, blank=False)
     company_reference = models.CharField(max_length=25, blank=True)
-    model = models.ForeignKey(MachineModel, to_field="model_name", on_delete=models.CASCADE)
+    model = models.ForeignKey(MachineModel, to_field="model_name", on_delete=models.DO_NOTHING)
     serial_number = models.CharField(max_length=30, unique=True)
     year_of_man = models.PositiveIntegerField()
     status = models.CharField(max_length=30)

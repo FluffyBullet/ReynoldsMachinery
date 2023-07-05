@@ -120,7 +120,7 @@ def new_asset(request):
         if form.is_valid():
             form_data = form.cleaned_data
             model_name = form_data['model']
-            machine_model = MachineModel.objects.get(model=model_name)
+            machine_model = get_object_or_404(MachineModel, model_name=model_name)
             machine = MachineProfile(
                 manufacturer_reference=form_data['manufacturer_reference'],
                 company_reference=form_data['company_reference'],
