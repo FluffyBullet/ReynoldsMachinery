@@ -237,3 +237,11 @@ Upon modular completion, and completion of the user stories on my project/kanban
     * From the tracking page, the customer can go into details of the active job.
     * At the footer of the details, the user is displayed with two buttons - edit and delete.
     * Edit will direct the user to a form page with fields pre-populated with the current information, allowing an opportunity to edit/update.
+        * After numerous test and attempts, all jobs are updated after following the above steps.
+1. As a user, I wish to delete a job.
+    * From the tracking page, the customer can go into details of the active job.
+    * At the footer of the details, the user is displayed with two buttons - edit and delete.
+    * Delete will display a modal seeking confirmation if the user wishes to delete the current job.
+    * Once actioned, the user is redirected back to the tracking page.
+
+

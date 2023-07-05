@@ -14,4 +14,5 @@ urlpatterns = [
     path('jobs/<int:job_id>/', views.JobDetailsView.as_view(), name='job_detail'),
     path('jobs/edit/<int:job_id>/', views.EditJobView.as_view(), name='job_edit'),
     path('jobs/create/', views.create_job, name='create_job'),
+    path('jobs/delete/<int:job_id>/', views.delete_job, name='delete_job'),
     ] 

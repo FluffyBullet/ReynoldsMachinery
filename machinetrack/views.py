@@ -207,3 +207,10 @@ def create_job(request):
         form = JobForm()
 
     return render(request, 'create_job.html', {'form': form})
+
+def delete_job(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+    job.delete()
+    message = f'Your job has been deleted.'
+    messages.success(request, message)
+    return redirect('tracker')
